@@ -100,10 +100,12 @@ void move_ctrl(char axis, uint8_t dir) {
 		if(mks_grbl.move_dis == M_0_1_MM) 			step = -0.1;
 		else if(mks_grbl.move_dis == M_1_MM)		step = -1;
 		else if(mks_grbl.move_dis == M_10_MM)		step = -10;
+		else if(mks_grbl.move_dis == M_50_MM)		step = -50;
 	}else {
 		if(mks_grbl.move_dis == M_0_1_MM) 			step = 0.1;
 		else if(mks_grbl.move_dis == M_1_MM)		step = 1;
 		else if(mks_grbl.move_dis == M_10_MM)		step = 10;
+		else if(mks_grbl.move_dis == M_50_MM)		step = 50;
 	}
 	
 	if(mks_grbl.move_speed == LOW_SPEED) 		speed = 500;
@@ -143,6 +145,9 @@ static void event_handler_len(lv_obj_t* obj, lv_event_t event) {
 			mks_grbl.move_dis = M_10_MM;
 			lv_label_set_text(move_page.Label_len, "10mm");
 		}else if(mks_grbl.move_dis == M_10_MM) {
+			mks_grbl.move_dis = M_50_MM;
+			lv_label_set_text(move_page.Label_len, "50mm");
+		}else if(mks_grbl.move_dis == M_50_MM) {
 			mks_grbl.move_dis = M_0_1_MM;
 			lv_label_set_text(move_page.Label_len, "0.1mm");
 		}
@@ -314,6 +319,9 @@ void set_step_len(void) {
 		mks_grbl.move_dis = M_10_MM;
 		mks_lv_label_updata(move_page.label_len, "10mm");
 	}else if(mks_grbl.move_dis == M_10_MM) {
+		mks_grbl.move_dis = M_50_MM;
+		mks_lv_label_updata(move_page.label_len, "50mm");
+	}else if(mks_grbl.move_dis == M_50_MM) {
 		mks_grbl.move_dis = M_0_1_MM;
 		mks_lv_label_updata(move_page.label_len, "0.1mm");
 	}
@@ -550,6 +558,8 @@ static void disp_label(void) {
 		move_page.label_len = mks_lvgl_long_sroll_label_with_wight_set_center(move_page.btn_len, move_page.label_len, 0, 0, "1mm", 50);
 	}else if(mks_grbl.move_dis == M_10_MM) {
 		move_page.label_len = mks_lvgl_long_sroll_label_with_wight_set_center(move_page.btn_len, move_page.label_len, 0, 0, "10mm", 50);
+	}else if(mks_grbl.move_dis == M_50_MM) {
+		move_page.label_len = mks_lvgl_long_sroll_label_with_wight_set_center(move_page.btn_len, move_page.label_len, 0, 0, "50mm", 50);
 	}
 	
 	if(mks_grbl.move_speed == LOW_SPEED) {
