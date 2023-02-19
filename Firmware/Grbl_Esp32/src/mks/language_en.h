@@ -1,21 +1,25 @@
-#ifndef __language_ch_h
-#define __language_ch_h
+#include "mks_draw_lvgl.h"
 
-/* 公共 */
+#ifndef __language_en_h
+#define __language_en_h
+
+
+
+/* публичный */
 #define BACK_EN                 "Back"
 #define YES_EN                  "Yes"
 #define NO_EN                   "No"
 
-/* 主页 */
+/* главная страница */
 #define CONTROL_EN              "Control"           
-#define SCULPTURE_EN            "Sculpture"         
+#define SCULPTURE_EN            "Engrave"         
 #define TOOL_EN                 "Tool"          
 #define MPOS_EN                 "Mechanical coordinat"          
 #define WPOS_EN                 "Working coordinates"
 #define WIFI_CONNECT_EN   	    "Connect"
 #define WIFI_DISCONNECT_EN	    "Disconnect"
 
-/* 控制界面 */
+/* Интерфейс управления */
 #define XY_CLEAR_EN             "XY_Clear"
 #define Z_CLEAR_EN              "Z_Clear"
 #define KNIFE_EN                "Knife"
@@ -29,10 +33,10 @@
 #define SPINDLE_EN              "Spindle"
 #define CARVE_EN                "Carve"
 
-/* 文件界面 */
+/* Файловый интерфейс */
 #define DIS_NO_SDCARD_EN        "No SD Card"
 
-/* 雕刻界面 */
+/* Интерфейс гравировки */
 #define HOLD_EN                 "Hold"
 #define CYCLE_EN                "Cycle"
 #define STOP_EN                 "Stop"

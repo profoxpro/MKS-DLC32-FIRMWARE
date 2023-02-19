@@ -104,24 +104,22 @@ void my_print(lv_log_level_t level, const char * file, uint32_t line, const char
 
 void mks_grbl_parg_init(void) {
 
-    if(language_select->get() == 0) mks_grbl.language = SimpleChinese;
-    else if(language_select->get() == 1) mks_grbl.language = English;
-    else if(language_select->get() == 1) mks_grbl.language = Deutsch;
+    mks_grbl.language = English;
     
     mks_grbl.light_status = GRBL_Light_Off;
     mks_grbl.move_dis = M_10_MM;
     mks_grbl.move_speed = HIGHT_SPEED;
     mks_grbl.bl_status = BL_NONE;               
     mks_grbl.is_mks_ts35_flag = false;
-    mks_grbl.wifi_check_status = false;
+    mks_grbl.wifi_check_status = true;
     mks_grbl.wifi_connect_status = false;
     mks_grbl.power_persen = P_0_PERSEN;
     mks_grbl.mks_sd_status = 0;
     mks_grbl.wifi_back_from = 0;
     mks_grbl.is_need_ref_sd_file = true;
-    mks_ui_page.mks_ui_page = MKS_UI_Ready;                     // 开机进入主页的标记
-    mks_ui_page.wait_count = DEFAULT_UI_COUNT;                  // 允许10个周期的等待lvgl数据缓冲
-    mks_grbl.carve_times = 0;                                   // 雕刻次数
+    mks_ui_page.mks_ui_page = MKS_UI_Ready;                     // Отметьте для загрузки на домашнюю страницу
+    mks_ui_page.wait_count = DEFAULT_UI_COUNT;                  // Допускает 10 циклов ожидания буферизации данных lvgl
+    mks_grbl.carve_times = 0;                                   // Количество резных фигур
     #if defined(ENABLE_WIFI)
     mks_wifi.wifi_show_page = 1;
     mks_wifi.wifi_scanf_status = wifi_none;

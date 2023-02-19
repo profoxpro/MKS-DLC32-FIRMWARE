@@ -5,11 +5,7 @@ LANGUAGE_PAGE_T language_page;
 
 void mc_language_init(void) {
 
-	if(mks_grbl.language = SimpleChinese) {
 
-		 
-	}
-	else if(mks_grbl.language = English) {
 		mc_language.back = BACK_EN;
 		mc_language.yes = YES_EN;
 		mc_language.no = NO_EN;
@@ -50,7 +46,7 @@ void mc_language_init(void) {
 		mc_language.dis_probe_set = DIS_PROBE_SET;
 		mc_language.dis_probe_succeed = DIS_PROBE_SECCEED_EN;
 		mc_language.dis_probe_fail = DIS_PROBE_FAIL_EN;
-	}
+	
 }
 
 
@@ -67,6 +63,7 @@ static uint8_t get_event(lv_obj_t* obj) {
     else if(obj == language_page.imgbtn_simple_cn)           	return ID_L_CN;
 	else if(obj == language_page.imgbtn_en)						return ID_L_EN;
 	else if(obj == language_page.imgbtn_de)						return ID_L_DE;
+	return ID_L_EN;
 }
 
 /*
@@ -77,22 +74,8 @@ static uint8_t get_event(lv_obj_t* obj) {
  *	3...
 */
 static void set_language(uint8_t language) {
-
-	switch(language) {
-
-		case 0:
-			mks_grbl.language = SimpleChinese;
-		break;
-
-		case 1:
-			mks_grbl.language = English;
-		break;
-
-		case 2:
-			mks_grbl.language = Deutsch;
-		break;
-	}
-	mc_language_init();
+	mks_grbl.language = English;
+    mc_language_init();
 }
 
 static void enent_handler_back(void) {
@@ -163,13 +146,19 @@ static void event_handler(lv_obj_t* obj, lv_event_t event) {
 				set_language_btn_style(2);
 				MKS_GRBL_CMD_SEND(str_language_de);
 			break;
+			default:
+				set_language(1); 
+				set_language_btn_style(1);
+				MKS_GRBL_CMD_SEND(str_language_en);
+			break;
+
         }
     }
 }
 
 void draw_language(void) {
 
-	uint8_t language_num = 0;
+	uint8_t language_num = 1;
 
 	mks_global.mks_src_1 = lv_obj_create(mks_global.mks_src, NULL);
 	lv_obj_set_size(mks_global.mks_src_1, about_src1_x_size, about_src1_y_size);
@@ -184,6 +173,7 @@ void draw_language(void) {
 
 	language_num = language_select->get();
 
+	set_language(language_num); 
 	set_language_btn_style(language_num);
 	
 	label_for_imgbtn_name(mks_global.mks_src, language_page.label_back, language_page.imgbtn_back, 0, 0, "back");

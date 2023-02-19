@@ -34,7 +34,7 @@
 
 #define MACHINE_NAME                "MKS DLC32"
 #ifdef USE_BOARD_V2_0
-    #define BOARD_NAME              "Board:MKS DLC32 CNC V2.0"
+    #define BOARD_NAME              "Board:MKS DLC32 CNC V2.1"
 #else 
     #define BOARD_NAME              "Board:MKS DLC32 CNC V1.0"
 #endif
@@ -83,12 +83,9 @@
 #endif
 
 // Laser pin set
-#define SPINDLE_TYPE                SpindleType::PWM 
-#ifdef USE_BOARD_V2_0
+#define SPINDLE_TYPE                SpindleType::LASER 
 #define SPINDLE_OUTPUT_PIN          GPIO_NUM_32
-#else 
-#define SPINDLE_OUTPUT_PIN          GPIO_NUM_22
-#endif
+
 
 #define X_LIMIT_PIN                 GPIO_NUM_36
 #define Y_LIMIT_PIN                 GPIO_NUM_35
@@ -124,7 +121,7 @@
 #define GRBL_SPI_MOSI 			    GPIO_NUM_13
 #define GRBL_SPI_SS 			    GPIO_NUM_15
 #define SDCARD_DET_PIN 			    GPIO_NUM_39
-#define GRBL_SPI_FREQ 			    40000000
+#define GRBL_SPI_FREQ 			    4000000
 
 // === Default settings
 // #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
@@ -159,29 +156,29 @@
 #ifdef USE_SPINDLE_RELAY
     #define DEFAULT_SPINDLE_RPM_MAX 1.0 // must be 1 so PWM duty is alway 100% to prevent relay damage
 #else
-    #define DEFAULT_SPINDLE_RPM_MAX 10000.0 // can be change to your spindle max
+    #define DEFAULT_SPINDLE_RPM_MAX 1000.0 // can be change to your spindle max
 #endif
 #define DEFAULT_SPINDLE_RPM_MIN 0.0 // rpm
 
-#define DEFAULT_LASER_MODE 0 // false
+#define DEFAULT_LASER_MODE 1 // true
 
 #define DEFAULT_X_STEPS_PER_MM 80.0
 #define DEFAULT_Y_STEPS_PER_MM 80.0
 #define DEFAULT_Z_STEPS_PER_MM 80.0
 
-#define DEFAULT_X_MAX_RATE 6000.0 // mm/s
-#define DEFAULT_Y_MAX_RATE 6000.0 // mm/s
-#define DEFAULT_Z_MAX_RATE 6000.0 // mm/s
+#define DEFAULT_X_MAX_RATE 4000.0 // mm/s
+#define DEFAULT_Y_MAX_RATE 2000.0 // mm/s
+#define DEFAULT_Z_MAX_RATE 2000.0 // mm/s
 
 #define DEFAULT_X_ACCELERATION 500.0 // mm/sec^2
 #define DEFAULT_Y_ACCELERATION 500.0 // mm/sec^2
 #define DEFAULT_Z_ACCELERATION 500.0 // mm/sec^2
 
-#define DEFAULT_X_MAX_TRAVEL 450.0 // mm NOTE: Must be a positive value.
-#define DEFAULT_Y_MAX_TRAVEL 450.0 // mm NOTE: Must be a positive value.
-#define DEFAULT_Z_MAX_TRAVEL 50.0 // mm NOTE: Must be a positive value.
+#define DEFAULT_X_MAX_TRAVEL 480.0 // mm NOTE: Must be a positive value.
+#define DEFAULT_Y_MAX_TRAVEL 850.0 // mm NOTE: Must be a positive value.
+#define DEFAULT_Z_MAX_TRAVEL 100.0 // mm NOTE: Must be a positive value.
 
-#define DEFAULT_SPINDLE_FREQ        1920// 8000.0   // 1KHz
+#define DEFAULT_SPINDLE_FREQ        1000.0  //1920// 8000.0   // 1KHz
 #define DEFAULT_LASER_FULL_POWER    1000
 #define DEFAULT_SPINDLE_MAX_VALUE   1000    
 #define DEFAULT_SPINDLE_MIN_VALUE   0
