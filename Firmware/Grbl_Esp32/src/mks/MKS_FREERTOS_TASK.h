@@ -4,7 +4,7 @@
 #include "FreeRTOS.h"
 #include "MKS_LVGL.h"
 #include "MKS_draw_ready.h"
-
+#include "MKS_draw_language.h"
 
 extern TaskHandle_t lv_disp_tcb;
 extern TaskHandle_t frame_task_tcb;
