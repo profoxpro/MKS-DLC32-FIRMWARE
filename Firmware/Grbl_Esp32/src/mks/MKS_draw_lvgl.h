@@ -21,21 +21,19 @@
 #include "draw_ui.h"
 
 #include "language_en.h"
-#include "language_ch.h"
-// #include "language_de.h"
 
 extern lv_obj_t *mks_src;
 
 
 typedef struct {
 
-    // 页面显示
+    // Отображение страницы
     lv_obj_t *mks_src;      // 背景
     lv_obj_t *mks_src_1;    // 基于背景的第一个界面
     lv_obj_t *mks_src_2;    // 基于背景的第二个界面
     lv_obj_t *mks_src_3;    // 基于背景的第三个界面 
 
-    // 样式定义
+    // Определение стиля
     lv_style_t mks_src_style;
     lv_style_t mks_src_1_style;
     lv_style_t mks_src_2_style;

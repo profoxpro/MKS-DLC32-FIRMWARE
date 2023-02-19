@@ -28,9 +28,7 @@ typedef enum {
 }GRBL_MOVE_SPEED;
 
 typedef enum {
-    SimpleChinese,      
     English,
-    Deutsch,
 }GRBL_Language;
 
 typedef enum {
@@ -53,11 +51,11 @@ typedef enum {
 
 typedef enum {
     BL_NONE,
-    BL_BEGIN,           //开始调整
+    BL_BEGIN,           //Начните приспосабливаться
     BL_UP,
     BL_DOWN,
-    BL_ADJ_ING,         //正在调整
-    BL_ADJ_END,         //调整结束
+    BL_ADJ_ING,         //Регулирующий
+    BL_ADJ_END,         //Окончание настройки
 }BLTOUCH_STATUS;
 
 typedef enum {
@@ -68,54 +66,54 @@ typedef enum {
 
 
 typedef struct{
-    GRBL_MOVE_DIS               move_dis;           // 移动距离
-    GRBL_MOVE_SPEED             move_speed;         // 移动速度
-    GRBL_Language               language;           // 语言设置
-    GRBL_LIGHT_STATUS           light_status;       // 灯状态
-    GRBL_POWER                  power_persen;       // 功率步长设置
-    BLTOUCH_STATUS              bl_status;          // BLTOUCH运行状态
-    GRBL_CNC_PWR                cnc_pwr;            // CNC功率设置
-    uint16_t                    X_Pos;              // x坐标
-    uint16_t                    Y_Pos;              // y坐标
-    uint8_t                     mks_sd_status;      // sd卡是否插入, 0:没检测到SD卡， 1:检测到SD卡
-    uint16_t                    mks_sd_file_times;  // 读取时，以6个文件为基础，从times*6开始显示文件名
-    bool                        is_mks_ts35_flag;   // 是否是通过TS35执行的雕刻功能
-    bool                        wifi_connect_status;// wifi連接轉態檢測
-    bool                        wifi_check_status;  // 是否需要檢測wifi連接
-    uint8_t                     wifi_back_from;     // 判断wifi界面是从哪里进去的 0=主界面， 1=关于界面
-    bool                        wifi_connect_enable;// 允许wifi自动连接
+    GRBL_MOVE_DIS               move_dis;           // Расстояние перемещения
+    GRBL_MOVE_SPEED             move_speed;         // Скорость перемещения
+    GRBL_Language               language;           // Языковые настройки
+    GRBL_LIGHT_STATUS           light_status;       // Состояние освещения
+    GRBL_POWER                  power_persen;       // Настройка размера шага мощности
+    BLTOUCH_STATUS              bl_status;          // Рабочее состояние BLTOUCH
+    GRBL_CNC_PWR                cnc_pwr;            // Настройка мощности ЧПУ
+    uint16_t                    X_Pos;              // координата x
+    uint16_t                    Y_Pos;              // координата y
+    uint8_t                     mks_sd_status;      // Вставлена ли SD-карта, 0: SD-карта не обнаружена, 1: SD-карта обнаружена
+    uint16_t                    mks_sd_file_times;  // При чтении, основанном на 6 файлах, имя файла отображается, начиная с times*6
+    bool                        is_mks_ts35_flag;   // Является ли это функцией гравировки, выполняемой через TS35?
+    bool                        wifi_connect_status;// обнаружение перехода Wi-Fi-соединения
+    bool                        wifi_check_status;  // Вам нужно определить подключение Wi-Fi
+    uint8_t                     wifi_back_from;     // Определите, откуда пришел интерфейс Wi-Fi 0 = основной интерфейс, 1 = об интерфейсе
+    bool                        wifi_connect_enable;// Разрешить автоматическое подключение Wi-Fi
     bool                        popup_1_flag;
     bool                        is_need_ref_sd_file;
-    uint32_t                    carve_times;        // 雕刻次数
-    bool                        is_test_mode = false;       // 是否使用生产模式
+    uint32_t                    carve_times;        // Количество резных фигур
+    bool                        is_test_mode = false;       // Следует ли использовать производственный режим
 }GRBL_CRTL;
 extern GRBL_CRTL mks_grbl;
 
 typedef enum {
 
-    MKS_UI_PAGE_LOADING,        // 跳转页面时的标志
+    MKS_UI_PAGE_LOADING,        // Логотип при переходе на страницу
 
-    /* 页面标志 */
-    MKS_UI_Logo,    // logo显示
-    MKS_UI_Ready,   // 主界面
-    MKS_UI_Adjust,  // 功率调整界面
-    MKS_UI_Control, // 移动控制界面
-    MKS_UI_Caving,  // 雕刻界面
-    MKS_UI_Pring,   // 打印界面
-    MKS_UI_Tool,    // 工具界面
-    MKS_UI_Wifi,    // WIFI相关界面
-    MKS_UI_Frame,   // 巡边界面
-    MKS_UI_inFile,  // 打开文件后的界面
-    MKS_UI_UPDATA,  // 配置文件更新界面
-    MKS_UI_LANGUAGE,    // 语言设置界面
-    MKS_UI_TEST,    // 测试模式的页面
+    /* Логотип страницы */
+    MKS_UI_Logo,    // logo
+    MKS_UI_Ready,   // Основной интерфейс
+    MKS_UI_Adjust,  // Интерфейс регулировки мощности
+    MKS_UI_Control, // Мобильный интерфейс управления
+    MKS_UI_Caving,  // Интерфейс гравировки
+    MKS_UI_Pring,   // Интерфейс печати
+    MKS_UI_Tool,    // Интерфейс инструмента
+    MKS_UI_Wifi,    // Интерфейс, связанный с Wi-FI
+    MKS_UI_Frame,   // Патрулирование пограничной поверхности
+    MKS_UI_inFile,  // Интерфейс после открытия файла
+    MKS_UI_UPDATA,  // Интерфейс обновления файла конфигурации
+    MKS_UI_LANGUAGE,    // Интерфейс настройки языка
+    MKS_UI_TEST,    // Страница тестового режима
 }mks_ui_page_t;
 
 
 #define DEFAULT_UI_COUNT    1
 typedef struct {
     mks_ui_page_t mks_ui_page;
-    uint8_t wait_count;             // 等待LVGL事件生成缓冲，用于界面数据更新
+    uint8_t wait_count;             // Дождитесь, пока событие LVGL сгенерирует буфер для обновления данных интерфейса
 }LVGL_UI_PAGE_t;
 extern LVGL_UI_PAGE_t mks_ui_page;
 

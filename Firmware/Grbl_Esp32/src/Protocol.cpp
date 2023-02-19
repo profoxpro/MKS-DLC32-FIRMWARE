@@ -143,7 +143,7 @@ void protocol_main_loop() {
     // Primary loop! Upon a system abort, this exits back to main() to reset the system.
     // This is also where Grbl idles while waiting for something to do.
     // ---------------------------------------------------------------------------------
-    MKS_GRBL_CMD_SEND("$x\n");   // 主动解锁
+    MKS_GRBL_CMD_SEND("$x\n");   // Активно разблокируйте
 
     if(first_restart == true) {
       MKS_GRBL_CMD_SEND(re_cmd);  

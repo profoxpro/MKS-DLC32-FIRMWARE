@@ -35,7 +35,7 @@ typedef enum {
 
 typedef struct {
 
-    // lv_obj_t* ready_imgbtn_Adjustment;  //用于创建图片按键
+    // lv_obj_t* ready_imgbtn_Adjustment;  //Используется для создания кнопок с изображением
     lv_obj_t* ready_imgbtn_Control;
     lv_obj_t* ready_imgbtn_Sculpture;
     lv_obj_t* ready_imgbtn_Tool;

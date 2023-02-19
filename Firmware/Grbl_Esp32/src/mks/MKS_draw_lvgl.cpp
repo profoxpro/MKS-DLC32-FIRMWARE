@@ -9,10 +9,10 @@ COMMON_POPUP_T com_p_info;
 COMMON_POPUP_T com_p_info_com;
 COMMON_POPUP_T cavre_pupop;
 
-LV_IMG_DECLARE(add);  // 加
-LV_IMG_DECLARE(confirm);  // 确认
-LV_IMG_DECLARE(s_return);  // 确认
-LV_IMG_DECLARE(reduce);  // 减
+LV_IMG_DECLARE(add);  // плюс
+LV_IMG_DECLARE(confirm);  // подтверждать
+LV_IMG_DECLARE(s_return);  // отменить
+LV_IMG_DECLARE(reduce);  // минус
 
 /* 
  * Author   :MKS
@@ -91,7 +91,7 @@ lv_obj_t* mks_lvgl_long_sroll_label_with_wight_set_center(lv_obj_t* scr, lv_obj_
 }
 
 /*
- * 用于显示文件名
+ * Используется для отображения имени файла
 */
 lv_obj_t* label_for_file(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_coord_t y, const char* text, lv_coord_t w) {
 
@@ -106,7 +106,7 @@ lv_obj_t* label_for_file(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_coord_t 
 }
 
 /*
- * 用于按键里面的文本
+ * Используется для текста внутри кнопки
 */
 lv_obj_t* label_for_btn_name(lv_obj_t* scr, lv_obj_t* lab,lv_coord_t x, lv_coord_t y, const char* text) {
     lab = lv_label_create(scr, NULL);
@@ -119,7 +119,7 @@ lv_obj_t* label_for_btn_name(lv_obj_t* scr, lv_obj_t* lab,lv_coord_t x, lv_coord
 }
 
 /*
- * 用于图片按键的文本
+ * Текст для кнопок с картинками
 */
 lv_obj_t* label_for_imgbtn_name(lv_obj_t* scr, lv_obj_t* lab, lv_obj_t* base, lv_coord_t x, lv_coord_t y, const char* text) {
     lab = lv_label_create(scr, NULL);
@@ -132,7 +132,7 @@ lv_obj_t* label_for_imgbtn_name(lv_obj_t* scr, lv_obj_t* lab, lv_obj_t* base, lv
 }
 
 /*
- * 用于图片按键的文本
+ * Текст для кнопок с картинками
 */
 lv_obj_t* label_for_imgbtn_name_mid(lv_obj_t* scr, lv_obj_t* lab, lv_obj_t* base, lv_coord_t x, lv_coord_t y, const char* text) {
     lab = lv_label_create(scr, NULL);
@@ -145,7 +145,7 @@ lv_obj_t* label_for_imgbtn_name_mid(lv_obj_t* scr, lv_obj_t* lab, lv_obj_t* base
 }
 
 /*
- * 用于提示框显示
+ * Используется для отображения окна подсказок
 */
 lv_obj_t* label_for_screen(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_coord_t y, const char* text) {
 
@@ -159,7 +159,7 @@ lv_obj_t* label_for_screen(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_coord_
 }
 
 /*
- * 用于提示框显示
+ * Используется для отображения окна подсказок
 */
 lv_obj_t* label_for_infile_name(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_coord_t y, const char* text) {
 
@@ -174,8 +174,8 @@ lv_obj_t* label_for_infile_name(lv_obj_t* scr, lv_obj_t* lab, lv_coord_t x, lv_c
 }
 
 /*
- * 用于信息显示
- * 提供对齐选项
+ * Используется для отображения информации
+ * Предоставьте варианты выравнивания
 */
 lv_obj_t* label_for_text(lv_obj_t* scr, lv_obj_t* lab, lv_obj_t * base, lv_coord_t x, lv_coord_t y, lv_align_t align,  const char* text) {
     lab = lv_label_create(scr, NULL);
@@ -420,7 +420,7 @@ void draw_global_popup(const char *text) {
 	lv_style_copy(&com_p2.com_btn_sytle, &lv_style_scr);
 	com_p2.com_btn_sytle.body.main_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
     com_p2.com_btn_sytle.body.grad_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
-    com_p2.com_btn_sytle.body.opa = LV_OPA_COVER;//设置背景色完全不透明
+    com_p2.com_btn_sytle.body.opa = LV_OPA_COVER;//Установите цвет фона полностью непрозрачным
     com_p2.com_btn_sytle.text.color = LV_COLOR_WHITE;
 	com_p2.com_btn_sytle.body.radius = 10;
 
@@ -457,7 +457,7 @@ void mks_draw_common_popup(char *title, char *line1, char *line2, lv_event_cb_t 
     com_p1.com_btn_sytle.body.main_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
     com_p1.com_btn_sytle.body.grad_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
 	com_p1.com_btn_sytle.body.radius = 10;
-    com_p1.com_btn_sytle.body.opa = LV_OPA_COVER; // 设置背景色完全不透明
+    com_p1.com_btn_sytle.body.opa = LV_OPA_COVER; // Установите цвет фона полностью непрозрачным
     com_p1.com_btn_sytle.text.color = LV_COLOR_WHITE;
 	
 	com_p1.btn_yes = mks_lv_btn_set(com_p1.com_popup_src, com_p1.btn_yes, 100,40,10,130, event_cb_yes);
@@ -519,7 +519,7 @@ void mks_draw_common_popup_info_com(char *title, char *line1, char *line2, lv_ev
     com_p_info_com.com_btn_sytle.body.main_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
     com_p_info_com.com_btn_sytle.body.grad_color = LV_COLOR_MAKE(0x3F, 0x46, 0x66);
 	com_p_info_com.com_btn_sytle.body.radius = 10;
-    com_p_info_com.com_btn_sytle.body.opa = LV_OPA_COVER; // 设置背景色完全不透明
+    com_p_info_com.com_btn_sytle.body.opa = LV_OPA_COVER; // Установите цвет фона полностью непрозрачным
     com_p_info_com.com_btn_sytle.text.color = LV_COLOR_WHITE;
 	
     com_p_info_com.btn_yes = mks_lv_btn_set_for_screen(com_p_info_com.com_popup_src, com_p_info_com.btn_yes, 100, 40, 0, 60, event_cb_yes);

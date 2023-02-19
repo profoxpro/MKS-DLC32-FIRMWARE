@@ -12,7 +12,7 @@ uint8_t x2point_flag = false;
 uint8_t y1point_flag = false;
 uint8_t y2point_flag = false;
 
-// 创建内核对象句柄
+// Создать дескриптор объекта ядра
 SemaphoreHandle_t is_fram_need = NULL;
 
 LV_IMG_DECLARE(back);		
@@ -58,12 +58,12 @@ void mks_draw_frame(void) {
     mks_ui_page.wait_count = 1;
     lv_refr_now(lv_refr_get_disp_refreshing());
 
-    // 重新获取文件信息
+    // Извлечение информации о файле
     memset(frame_ctrl.current_file_name, 0, sizeof(frame_ctrl.current_file_name));
 	memcpy(frame_ctrl.current_file_name, frame_ctrl.file_name, 128);
     frame_ctrl.current_file_size = mks_file_list.file_size[mks_file_list.file_choose]; 
 
-    // 发送信号量通知线程进入巡边
+    // Отправьте семафор, чтобы уведомить поток о входе в пограничный патруль
     sem_give = xSemaphoreGive(is_fram_need);
 
     if(sem_give == pdTRUE) {
@@ -76,7 +76,7 @@ void mks_draw_frame(void) {
 
 void mks_openSDFile(char* parameter) {
     
-    if (*parameter == '\0') {    // 用来判断文件名是否为空
+    if (*parameter == '\0') {    // Используется для определения того, является ли имя файла пустым
         return;
     }
 
@@ -262,7 +262,7 @@ void mks_run_frame(char *parameter) {
     frame_ctrl.cancle_enable = true;
     frame_ctrl.out = true;
 
-    if (sys.state != State::Idle && sys.state != State::Alarm) {    // 判断SD卡状态
+    if (sys.state != State::Idle && sys.state != State::Alarm) {    // Определите состояние SD-карты
         mks_lv_label_updata(frame_page.label_text, "SD is busy...");
         lv_refr_now(lv_refr_get_disp_refreshing());
         frame_ctrl.cancle_enable = true;
@@ -276,7 +276,7 @@ void mks_run_frame(char *parameter) {
     char fileLine[255];
     uint8_t point_last_num = 1;
     uint32_t point_count = 0;
-    uint32_t get_current_line = sd_get_current_line_number(); // 获取当前
+    uint32_t get_current_line = sd_get_current_line_number(); // Получить текущий
     char *b = NULL;
     bool need_fine = true;
 
