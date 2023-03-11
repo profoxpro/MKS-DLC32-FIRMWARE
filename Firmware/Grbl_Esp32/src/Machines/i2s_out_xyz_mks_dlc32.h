@@ -84,7 +84,8 @@
 
 // Laser pin set
 #define SPINDLE_TYPE                SpindleType::LASER 
-#define SPINDLE_OUTPUT_PIN          GPIO_NUM_32
+//#define SPINDLE_OUTPUT_PIN          GPIO_NUM_32
+#define LASER_OUTPUT_PIN            GPIO_NUM_32   
 
 
 #define X_LIMIT_PIN                 GPIO_NUM_36
