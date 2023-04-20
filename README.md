@@ -1,5 +1,9 @@
+# Changlelog
+Selected the default language is English
+Default Laser mode
+
 # MKS-DLC32-FIRMWARE
-The source code of MKS DLC32.
+The fork source code of MKS DLC32.
 
 ## Environment construction:
 
