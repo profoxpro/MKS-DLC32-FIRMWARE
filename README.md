@@ -1,3 +1,7 @@
+# Fork changlelog
+Selected the default language is English
+Selected the default Laser mode
+
 # MKS-DLC32-FIRMWARE
 The source code of MKS DLC32.
 
